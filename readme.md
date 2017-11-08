@@ -5,7 +5,7 @@ It's just an experiment with scrollview capabilities
 ## Why would You use this library?
 
 1. Super simple codebase
-2. Gesture handling and animation of the fading view (the one that you're ) runs solely on the main thread
+2. Gesture handling and animation of the fading view are handled on the main thread
 3. Looks natively on ios and android
 
 ## Caveats
