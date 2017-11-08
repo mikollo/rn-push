@@ -1,6 +1,12 @@
-# React Native simplest component ever do achieve push from right transition
+# React Native simplest push from right transition
 
-It's just an experiment with scrollview capabilities
+Actually it's just an experiment with scrollview.
+
+[Try it out on Expo Snack!](https://snack.expo.io/@mikollo/rn-push)
+
+<center>
+	<img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
+</center>
 
 ## Why would You use this library?
 
