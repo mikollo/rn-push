@@ -1,0 +1,19 @@
+{
+  "name": "rn-push",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikollo/rn-push.git"
+  },
+  "keywords": [
+    "react-native",
+    "transition",
+    "push",
+    "push from right",
+    "scrollview",
+    "navigator"
+  ],
+  "author": "Mikołaj Nowakowski"
+}
