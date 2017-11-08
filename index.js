@@ -12,6 +12,7 @@ export default class Push extends React.Component {
   static defaultProps = {
     color: "#efefef"
   };
+
   state = {
     show: false
   };
@@ -62,10 +63,12 @@ export default class Push extends React.Component {
               }
             )}
             onLayout={() =>
-              this.refs.scrollView._component.scrollTo({ x: window.width })}
+              this.scrollView._component.scrollTo({ x: window.width })}
             scrollEventThrottle={1}
             pagingEnabled={true}
-            ref="scrollView"
+            ref={scrollView => {
+              this.scrollView = scrollView;
+            }}
             horizontal={true}
             overScrollMode={"never"}
             bounces={false}
@@ -89,7 +92,7 @@ export default class Push extends React.Component {
               }}
             >
               {React.cloneElement(this.props.children[1], {
-                pop: () => this.refs.scrollView._component.scrollTo({ x: 0 })
+                pop: () => this.scrollView._component.scrollTo({ x: 0 })
               })}
             </View>
           </Animated.ScrollView>
