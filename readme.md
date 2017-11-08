@@ -30,9 +30,9 @@ This component takes two children components and allows you to navigate between 
 import Push from "rn-push";
 
 function App(props) {
-    // if you don't pass color prop, then the default is #ededed
+    // you can pass color prop (default: #efefef)
   return (
-    <Push color="#ededed">
+    <Push color="#efefef">
       <Screen />
       <Screen />
     </Push>
