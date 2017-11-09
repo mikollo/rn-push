@@ -4,9 +4,9 @@ Actually it's just an experiment with scrollview.
 
 [Try it out on Expo Snack!](https://snack.expo.io/@mikollo/rn-push)
 
-<center>
+
 	<img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
-</center>
+
 
 ## Why would You use this library?
 
