@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Animated, ScrollView, Dimensions } from "react-native";
+import { View, Animated, ScrollView, Dimensions, BackHandler } from "react-native";
 
 const window = Dimensions.get("window");
 
@@ -7,6 +7,20 @@ export default class Push extends React.Component {
   constructor(props) {
     super(props);
     this.animatedValue = new Animated.Value(0);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+
+      if (this.state.show && this.scrollView) {
+        this.scrollView._component.scrollTo({ x: 0 })
+        return true;
+      }
+      return false;
+
+
+    })
+
   }
 
   static defaultProps = {
@@ -44,12 +58,18 @@ export default class Push extends React.Component {
             alignItems: "center"
           }}
         >
-          {React.cloneElement(this.props.children[0], {
-            push: () => this.setState({ show: true })
+          {React.cloneElement(this.props.children, {
+            push: params => {
+              this.propsToPass = params.passProps;
+              this.component = params.component;
+              this.setState({ show: true });
+            }
           })}
         </Animated.View>
         {this.state.show && (
           <Animated.ScrollView
+            keyboardDismissMode={"on-drag"}
+            keyboardShouldPersistTaps
             showsHorizontalScrollIndicator={false}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { x: this.animatedValue } } }],
@@ -63,7 +83,8 @@ export default class Push extends React.Component {
               }
             )}
             onLayout={() =>
-              this.scrollView._component.scrollTo({ x: window.width })}
+              this.scrollView._component.scrollTo({ x: window.width })
+            }
             scrollEventThrottle={1}
             pagingEnabled={true}
             ref={scrollView => {
@@ -91,7 +112,8 @@ export default class Push extends React.Component {
                 backgroundColor: "white"
               }}
             >
-              {React.cloneElement(this.props.children[1], {
+              {React.createElement(this.component, {
+                ...this.propsToPass,
                 pop: () => this.scrollView._component.scrollTo({ x: 0 })
               })}
             </View>

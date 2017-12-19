@@ -1,39 +1,42 @@
 # React Native simplest push from right transition
 
-Actually it's just an experiment with scrollview.
+No need to link any native code.
 
-[Try it out on Expo Snack!](https://snack.expo.io/@mikollo/rn-push)
-
-
-	<img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
-
+    <img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
 
 ## Why would You use this library?
 
 1. Super simple codebase
 2. Gesture handling and animation of the fading view are handled on the main thread
-3. Looks natively on ios and android
+3. Looks nice on ios and android
 
-## Caveats
+## Problem
 
-You might still consider using `NavigatorIOS` because the animation is after all a little bit different - sometimes I think it's worse than in this component and sometimes I think it's better. But the major downside of native navigator is the fact that you can swipe only from the edge and obviously you can't share code with android.
+There are three approaches to handle navigation in React Native app:
+
+1. You can use native components like NavigatorIOS, Wix Navigation etc. - it's hard to customise them though and You have to install native dependencies.
+2. You can write navigation in JS that tries to mimick native navigation - You will inevitebly end up with uncanny valley UX.
+3. You can invent Your custom JS navigation - but it is usually hard to come up with better transitions than default ones on Android and iOS.
+
+This library represents third approach. But it is better than others becuase it uses scrollview as a gesture handler under the hood, which means You don't have to run animations on JS thread.
 
 ## Installation
 
 `yarn add rn-push`
 
+`npm install rn-push`
+
 ## Usage
 
-This component takes two children components and allows you to navigate between them 
+This component takes a single children and passes a `push` prop to it. Component that You will push to will receive `pop` prop.
 
 ```js
 import Push from "rn-push";
 
 function App(props) {
-    // you can pass color prop (default: #efefef)
+  // you can pass color prop (default: #efefef)
   return (
     <Push color="#efefef">
-      <Screen />
       <Screen />
     </Push>
   );
@@ -42,32 +45,25 @@ function App(props) {
 function Screen(props) {
   return (
     <View>
-      <Button title="Next" onPress={() => props.push()} />
-      <Button title="Previous" onPress={() => props.pop()} />
+      <Button
+        title="Next"
+        onPress={() =>
+          props.push({
+            component: Screen2,
+            passProps: {
+              title: "Previous"
+            }
+          })
+        }
+      />
     </View>
   );
 }
-```
 
-Example that shows how You can pass props to achieve infinite navigation
-
-```js
-import Push from "rn-push";
-
-function App(props) {
-  return (
-    <Push>
-      <ViewOne pop={() => props.pop()} />
-      <App />
-    </Push>
-  );
-}
-
-function ViewOne(props) {
+function Screen2(props) {
   return (
     <View>
-      <Button title="Next" onPress={() => props.push()} />
-      <Button title="Previous" onPress={() => props.pop()} />
+      <Button title={props.title} onPress={() => props.pop()} />
     </View>
   );
 }
