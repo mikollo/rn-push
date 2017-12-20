@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Animated, ScrollView, Dimensions, BackHandler } from "react-native";
+import {
+  View,
+  Animated,
+  ScrollView,
+  Dimensions,
+  BackHandler
+} from "react-native";
 
 const window = Dimensions.get("window");
 
@@ -10,17 +16,13 @@ export default class Push extends React.Component {
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-
+    BackHandler.addEventListener("hardwareBackPress", () => {
       if (this.state.show && this.scrollView) {
-        this.scrollView._component.scrollTo({ x: 0 })
+        this.scrollView._component.scrollTo({ x: 0 });
         return true;
       }
       return false;
-
-
-    })
-
+    });
   }
 
   static defaultProps = {
@@ -112,10 +114,12 @@ export default class Push extends React.Component {
                 backgroundColor: "white"
               }}
             >
-              {React.createElement(this.component, {
-                ...this.propsToPass,
-                pop: () => this.scrollView._component.scrollTo({ x: 0 })
-              })}
+              <Push>
+                {React.createElement(this.component, {
+                  ...this.propsToPass,
+                  pop: () => this.scrollView._component.scrollTo({ x: 0 })
+                })}
+              </Push>
             </View>
           </Animated.ScrollView>
         )}
