@@ -2,7 +2,7 @@
 
 No need to link any native code.
 
-    <img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
+<img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
 
 ## Why would You use this library?
 
@@ -28,7 +28,7 @@ This library represents third approach. But it is better than others becuase it 
 
 ## Usage
 
-This component takes a single children and passes a `push` prop to it. Component that You will push to will receive `pop` prop.
+This component takes a single children and passes a `push` prop to it. Component that You will push to will receive `pop` prop. You can push deeper from the screen that is already pushed.
 
 ```js
 import Push from "rn-push";
