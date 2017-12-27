@@ -68,3 +68,34 @@ function Screen2(props) {
   );
 }
 ```
+
+Component that you push from receieves `pushState` prop. You can do something like this:
+
+```js
+class Screen extends Component {
+  componentWillReceiveProps(props) {
+    if (props.pushState === false) {
+      // do something when user goes back
+      // ie. fetch data to update Your view or something like that
+    }
+  }
+
+  render() {
+    return (
+      <View>
+        <Button
+          title="Next"
+          onPress={() =>
+            props.push({
+              component: Screen2,
+              passProps: {
+                title: "Previous"
+              }
+            })
+          }
+        />
+      </View>
+    );
+  }
+}
+```
