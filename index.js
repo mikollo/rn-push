@@ -61,6 +61,7 @@ export default class Push extends React.Component {
           }}
         >
           {React.cloneElement(this.props.children, {
+            pushState: this.state.show,
             push: params => {
               this.propsToPass = params.passProps;
               this.component = params.component;
