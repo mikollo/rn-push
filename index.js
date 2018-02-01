@@ -72,7 +72,7 @@ export default class Push extends React.Component {
         {this.state.show && (
           <Animated.ScrollView
             keyboardDismissMode={"on-drag"}
-            keyboardShouldPersistTaps
+            keyboardShouldPersistTaps={"always"}
             showsHorizontalScrollIndicator={false}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { x: this.animatedValue } } }],
