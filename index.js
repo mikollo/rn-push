@@ -72,7 +72,7 @@ export default class Push extends React.Component {
         {this.state.show && (
           <Animated.ScrollView
             keyboardDismissMode={"on-drag"}
-            keyboardShouldPersistTaps={"always"}
+            keyboardShouldPersistTaps
             showsHorizontalScrollIndicator={false}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { x: this.animatedValue } } }],
@@ -115,7 +115,7 @@ export default class Push extends React.Component {
                 backgroundColor: "white"
               }}
             >
-              <Push>
+              <Push color={this.props.color}>
                 {React.createElement(this.component, {
                   ...this.propsToPass,
                   pop: () => this.scrollView._component.scrollTo({ x: 0 })
@@ -128,3 +128,4 @@ export default class Push extends React.Component {
     );
   }
 }
+
