@@ -73,9 +73,9 @@ Component that you push from receieves `pushState` prop. You can do something li
 
 ```js
 class Screen extends Component {
-  componentWillReceiveProps(props) {
-    if (props.pushState === false) {
-      // do something when user goes back
+  componentDidUpdate(prevProps) {
+    if (this.props.pushState !== prevProps.pushState) {
+      // do something when user goes back or forth
       // ie. fetch data to update Your view or something like that
     }
   }
