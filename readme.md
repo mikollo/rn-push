@@ -1,24 +1,24 @@
-# React Native simplest push from right transition
+# React Native simplest possible navigation - based on ScrollView
 
-No need to link any native code.
-
-<img src="https://thumbs.gfycat.com/DependentForsakenAustraliancurlew-size_restricted.gif" />
+<img src="https://thumbs.gfycat.com/AngryAdventurousAsiandamselfly-size_restricted.gif" />
 
 ## Why would You use this library?
 
-1. Super simple codebase
-2. Gesture handling and animation of the fading view are handled on the main thread
-3. Looks nice on ios and android
+1. Super simple and small codebase, which means You don't bloat Your bundle size - smaller codebase means it takes less time to load and parse Your code for JS engine and therefore Your app boots up faster.
+2. There's no need to add any native depedency (therefore it works with ie. Expo).
+2. Gesture handling and animation of the fading view are handled on the main thread.
+3. Looks nice on both iOS and Android (and it obviously utilizes back button on Android).
+4. It allows swipe back gesture to be started from anywhere on the screen (not just from the edge like UINavigationController).
 
 ## Problem
 
-There are three approaches to handle navigation in React Native app:
+There are three approaches to handle navigation in React Native apps:
 
 1. You can use native components like NavigatorIOS, Wix Navigation etc. - it's hard to customise them though and You have to install native dependencies.
-2. You can write navigation in JS that tries to mimick native navigation - You will inevitebly end up with uncanny valley UX.
-3. You can invent Your custom JS navigation - but it is usually hard to come up with better transitions than default ones on Android and iOS.
+2. You can write navigation in JS that tries to mimick native navigation - You will inevitebly end up with uncanny valley UX. Your navigation will look almost like the native one but this 1% difference will be extremely annoying.
+3. You can invent Your custom JS navigation - but it is hard to come up with better transitions than default ones on Android and iOS and it might confuse the user.
 
-This library represents third approach. But it is better than others becuase it uses scrollview as a gesture handler under the hood, which means You don't have to run animations on JS thread.
+This library represents third approach. But it is better than others becuase it uses ScrollView as a gesture handler under the hood, which means You don't have to run animations on JS thread,
 
 ## Installation
 
